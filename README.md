@@ -329,7 +329,7 @@ if __name__ == '__main__':
     app.run(port=8888)  # run our Flask app on port 8888
 ```
 
-To run the script, open a terminal and write _ipython  gem_spaas_challenge.py_.
+To run the script, open a terminal and write _ipython  powerplant_coding_challenge.py_.
 
 <img src='image1.png'>
 

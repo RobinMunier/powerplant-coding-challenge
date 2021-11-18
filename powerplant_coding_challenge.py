@@ -44,7 +44,7 @@ def preprocessing(data):
       A DataFrame whose each row represents a powerplant and the columns gather the useful information about it (pmin, pmax, etc.).
     groups : DataFrame
       A DataFrame whose each row represents a group of "mergeable" powerplants and the columns gather the useful information about it (pmin, pmax, etc.).
-      Using these groups allows to decrease the computing time of the whole algorithm when the number of powerplants if large.
+      Using these groups allows to decrease the computing time of the whole algorithm when the number of powerplants is large.
     load : float or int
       The load extracted from the data dictionary.        
     
@@ -153,8 +153,8 @@ def get_strategy(groups, load):
 
 
 def share(x, load, powerplants):
-    """ Recursive function computing the best strategy to use in terms of units (the units to use for production and the production each one should produce) 
-    from the best strategy defined in terms of groups (the groups to use for production and the production each one should produce).
+    """ Recursive function computing the best strategy to use in terms of units (the units to use for production and the power each one should deliver) 
+    from the best strategy defined in terms of groups (the groups to use for production and the power each one should deliver).
 
     Parameters
     ----------

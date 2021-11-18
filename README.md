@@ -50,10 +50,27 @@ from itertools import combinations
 
 ## Definition of some useful functions
 
-_Remark: Of course, these functions would have been commented if I had had a bit more time._
 
 ```python
 def preprocessing(data):
+
+    """ Function to extract the useful information from the dictionary input file.
+    Parameters
+    ----------
+    data : dict
+      Dict containing the data from the input json file.
+        
+    Returns
+    -------
+    powerplants : DataFrame
+      A DataFrame whose each row represents a powerplant and the columns gather the useful information about it (pmin, pmax, etc.).
+    groups : DataFrame
+      A DataFrame whose each row represents a group of "mergeable" powerplants and the columns gather the useful information about it (pmin, pmax, etc.).
+      Using these groups allows to decrease the computing time of the whole algorithm when the number of powerplants if large.
+    load : float or int
+      The load extracted from the data dictionary.        
+    
+    """
 
   def make_groups(df, cumulate=False):
     df['p_range']=df['pmax']-df['pmin']
@@ -94,7 +111,7 @@ def preprocessing(data):
   floor = lambda x: ((10*x)//1)/10
   ceil = lambda x: ((10*x)//1 + int((10*x)%1>0))/10
   powerplants['pmin'] = powerplants['pmin'].apply(ceil)
-  powerplants['pmin'] = powerplants['pmin'].apply(floor)
+  powerplants['pmax'] = powerplants['pmax'].apply(floor)
   powerplants['price'] = powerplants['fuel_prices']/powerplants['actual_efficiency']
   powerplants['name']=powerplants['name'].apply(lambda x:[x])
   powerplants = powerplants.sort_values(by=['price','pmin'], ascending=True).reset_index(drop=True) 
@@ -107,10 +124,23 @@ def preprocessing(data):
   groups = pd.concat([wind_turbines, groups], axis=0, ignore_index=True)
   
   return powerplants, groups, load
-  
+
 
 def get_strategy(groups, load):
+    """ Function to compute the best production strategy.
+    Parameters
+    ----------
+    groups : DataFrame
+      A DataFrame whose each row represents a group of "mergeable" powerplants and the columns gather the useful information about it (pmin, pmax, etc.).
+    load : float or int
+      The load extracted from the data dictionary. 
+        
+    Returns
+    -------
+    strategy : dict
+      Dictionary with two keys ("units" and "p") whose values are lists containing the groups to use for production and the power each one should deliver.
     
+    """
   strategy = {'units':[], 'p':[]}
   best_price = np.inf
 
@@ -140,10 +170,28 @@ def get_strategy(groups, load):
       if idx_pmax==r:
         break
 
-  return strategy, best_price
+  return strategy
 
 
 def share(x, load, powerplants):
+    """ Recursive function computing the best strategy to use in terms of units (the units to use for production and the production each one should produce) 
+    from the best strategy defined in terms of groups (the groups to use for production and the production each one should produce).
+    Parameters
+    ----------
+    x : list
+      A list of lists containing the units name constituting a particular group in the order they have been "merged" to create this group.
+    load : float or int
+      The load we want to generate with units from the group related to the x argument. 
+    powerplants : DataFrame
+      A DataFrame whose each row represents a powerplant and the columns gather the useful information about it (pmin, pmax, etc.).
+        
+    Returns
+    -------
+    results : dict
+      Dictionary whose keys are the name of the units constituting the group and the associated values are the power these units should deliver in order to optimally
+      generate the input load. 
+      
+    """
   results={}
   if len(x)==1:
     results[x[0]]=load
@@ -171,9 +219,29 @@ def share(x, load, powerplants):
 
 
 def get_results(strategy, groups, powerplants, share=share):
+    """ Function to write the results of the optimization of the strategy in a dictionary, in the format required by the rules of the challenge.
+ 
+    Parameters
+    ----------
+    strategy : dict
+      Dictionary with two keys ("units" and "p") whose values are lists containing the groups to use for production and the power each one should deliver.
+    groups : DataFrame
+      A DataFrame whose each row represents a group of "mergeable" powerplants and the columns gather the useful information about it (pmin, pmax, etc.).
+    powerplants : DataFrame
+      A DataFrame whose each row represents a powerplant and the columns gather the useful information about it (pmin, pmax, etc.).
+    share : func
+      Function computing the best strategy to use in terms of units (the units to use for production and the power each one should deliver) 
+      from the best strategy defined in terms of groups (the groups to use for production and the power each one should deliver).
+        
+    Returns
+    -------
+    results : dict
+      Dictionary with two keys ("units" and "p") whose values are lists containing the units and the power each one should deliver.    
+    
+    """
   results = []
   for (p,unit) in zip(strategy['p'], strategy['units']):
-    if unit==0: # hangle wind case
+    if unit==0: # handle wind case
       for name in groups.loc[unit,'name']:
         commitment=round(min(p, powerplants.loc[powerplants['name'].apply(lambda x:x[0])==name, 'pmax'].iloc[0]),1)
         results.append({"name":name, "p":str(round(min(p, commitment),1))})
@@ -191,8 +259,22 @@ def get_results(strategy, groups, powerplants, share=share):
 
 
 def plan(data):
+    """ Function to compute and write in a dictionary the optimal production plan associated to a dictionary input in the same format as the input files provided for 
+    the challenge.
+    
+    Parameters
+    ----------
+    data : dict
+      Dict containing the data from the input json file.
+      
+    Returns
+    -------
+    results : dict
+      Dictionary with two keys ("units" and "p") whose values are lists containing the units and the power each one should deliver.    
+    
+    """
     powerplants, groups, load = preprocessing(data)
-    strategy, best_price=get_strategy(groups, load)
+    strategy = get_strategy(groups, load)
     results = get_results(strategy, groups, powerplants, share)
     return results
 ```

@@ -14,7 +14,7 @@ I already proposed a first solution (corresponding to the last version of this r
 
 The first round of the challenge was an opportunity to devote myself to my favorite activity : failure, also known as learning. Committed to unit commitment, I am not only full of energy, I am full of renewable energy, so I decided to renew my previous solution in order to tackle the second round (I hope for this second round that it uses shin guards).<br>
 
-My first solution matched all the acceptance criteria defined by the rules. Besides, my solution always give the best possible result given the constaints (the formats are respected, the production is always matching the load, the power allocated to each powerplant is a multiple of 0.1 MW, the pmin and pmax of each powerplant is respected, the cost is as low as possible while matching these criteria).<br>
+My first solution matched all the acceptance criteria defined by the rules. Furthermore, my solution always give the best possible result given the constaints (the formats are respected, the production is always matching the load, the power allocated to each powerplant is a multiple of 0.1 MW, the pmin and pmax of each powerplant is respected, the cost is as low as possible while matching these criteria).<br>
 Besides, the rules require to not use any existing solver. Consequently, I did not use any existing algorithm (whatever it would come from an existing python package or from a book or research paper). Under this constraint, some challengers probably just used a big loop computing all the possible valid production plans in order to choose subsequently the one which implies the smallest cost. Others thought it was sufficient to successively allocate the remaining load to the available powerplants by order of price by MWh. That is not what I did : my solution is valid and I used several tricks to reduce the computation time of my algorithm.<br>
 
 I hence diagnosed two probable issues with this first solution :<br>
@@ -632,7 +632,7 @@ Once Postman is open on your computer, click on _POST_ to create a _POST_ reques
 <img src='image3.png'>
 
 
-## Validation
+## IX Validation <a id='IX'></a>
 
 An efficient way to validate the algorithm is to test it with several different input files. As we are provided with only three different examples of input file, I decided to simulate random input files. This way, I am able to check the results of my algorithm on some variations of the input.
 
@@ -715,7 +715,7 @@ Finally, here is the _results_ dictionary.<br>
 We see that this case is a simple case with a load equal to 28.5 MWh.<br>
 
 
-## IX. Potential extentions <a id='IX'></a>
+## X. Potential extentions <a id='X'></a>
 
 This challenge is of course a simplified version of the challenges tackled by the SPaaS team of ENGIE.<br>
 
@@ -726,7 +726,7 @@ Moreover, there is certainly an irreducible structural cost implied by the start
 For convenience, I talked about the wind parks as wind powerplants as they are considered as such in the dataset : indeed, the same "percentage of wind" (or equivalently the same wind speed) is assumed for all of the turbines of the same park, which is imprecise in practice, particularly because of wake effects of some turbines on the others.<br>
 
 
-## X. Few words <a id='X'></a>
+## XI. Few words <a id='XI'></a>
 
 Participating in this challenge made me feel deep delectation. It is always a bit rough the first time, but I think the preliminaries made this second attempt smoother than the first one.<br>
 
@@ -740,7 +740,7 @@ Learn from you already,<br>
 Robin<br>
 
 
-## XI. More projects <a id='XI'></a>
+## XII. More projects <a id='XII'></a>
 
 You can find more examples of my works on my Kaggle account, here : https://www.kaggle.com/robinmunier.<br>
 

@@ -17,11 +17,13 @@ The first round of the challenge was an opportunity to devote myself to my favor
 My first solution matched all the acceptance criteria defined by the rules. Besides, my solution always give the best possible result given the constaints (the formats are respected, the production is always matching the load, the power allocated to each powerplant is a multiple of 0.1 MW, the pmin and pmax of each powerplant is respected, the cost is as low as possible while matching these criteria).<br>
 Besides, the rules require to not use any existing solver. Consequently, I did not use any existing algorithm (whatever it would come from an existing python package or from a book or research paper). Under this constraint, some challengers probably just used a big loop computing all the possible valid production plans in order to choose subsequently the one which implies the smallest cost. Others thought it was sufficient to successively allocate the remaining load to the available powerplants by order of price by MWh. That is not what I did : my solution is valid and I used several tricks to reduce the computation time of my algorithm.<br>
 
-I hence diagnosed two probable issues with this first solution :
-- It does not contain a lot of explanations about the optimization process I used (exept docstrings to define each function). On another side, this part of the code is pretty self-explanatory (I guess it should be clear for experts with a quantitative or programming background). It seems more relevant to me to not spend too much time on this challenge and to explain the details during an interview. Besides, after having looked at the solutions proposed by other challengers for the first round, I did not see deep explanations of the optimisation process (or even just a working solution). 
-- It does not contain any of the three bonus tasks (providing a Dockerfile, a websocket server connection, or taking into account the costs of CO2 emissions).
+I hence diagnosed two probable issues with this first solution :<br>
+- It does not contain a lot of explanations about the optimization process I used (exept docstrings to define each function). On another side, this part of the code is pretty self-explanatory (I guess it should be clear for experts with a quantitative or programming background). It seems more relevant to me to not spend too much time on this challenge and to explain the details during an interview. Besides, after having looked at the solutions proposed by other challengers for the first round, I did not see deep explanations of the optimisation process (or even just a working solution). <br><br>
+- It does not contain any of the three bonus tasks (providing a Dockerfile, a websocket server connection, or taking into account the costs of CO2 emissions).<br><br>
 
-Thus, this second solution contains the first one plus added explanations and a consideration of the emission allowances (I am so ecological that I also recycle my work : I have the perfect profile to work for Engie).
+Thus, this second solution contains the first one plus added explanations and a consideration of the emission allowances (I am so ecological that I also recycle my work : I have the perfect profile to work for Engie).<br>
+
+Note that the mathematical formulas handcoded in LATEX are not rendered on github, so download this README file on your own computer and open it with a suited tool (like a Jupyter notebook).<br>
 
 
 ## **Table of content**<br>
@@ -737,13 +739,10 @@ Energize you soon,<br>
 Learn from you already,<br>
 Robin<br>
 
-<img src='few_words.jpeg'>
-
-
 
 ## XI. More projects <a id='XI'></a>
 
 You can find more examples of my works on my Kaggle account, here : https://www.kaggle.com/robinmunier.<br>
 
 
-<img src='the_end.png'>
+<img src='the_end.PNG'>

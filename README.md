@@ -41,9 +41,10 @@ Note that the mathematical formulas handcoded in LATEX are not rendered on githu
 [VI Endpoint creation](#VI)<br>
 [VII Running the API](#VII)<br>
 [VIII Using the API](#VIII)<br>
-[IX Potential extensions](#IX)<br>
-[X Few words](#X)<br>
-[XI More projects](#XI)<br>
+[IX Validation](#IX)<br>
+[X Potential extensions](#X)<br>
+[XI Few words](#XI)<br>
+[XII More projects](#XII)<br>
 
 
 ## I Preliminaries <a id='I'></a>

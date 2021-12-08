@@ -10,9 +10,9 @@ by &copy; Robin Munier (Since 1995)
 
 This is my solution to the powerplant-coding-challenge proposed by the SPaaS team of ENGIE here : https://github.com/gem-spaas/powerplant-coding-challenge<br>
 
-I already proposed a first solution (corresponding to the last version of this repository, published on the 18th of November). After a first round, ENGIE decided to open a second round.<br>
+I already proposed a first solution (corresponding to the last version of this repository, published on November 18th 2021). After a first round, ENGIE decided to open a second round.<br>
 
-The first round of the challenge was an opportunity to devote myself to my favorite activity : failure, also known as learning. Committed to unit commitment, I am not only full of energy, I am full of renewable energy, so I decided renew my previous solution in order to tackle the second round (I hope for this second round that it uses shin guards).<br>
+The first round of the challenge was an opportunity to devote myself to my favorite activity : failure, also known as learning. Committed to unit commitment, I am not only full of energy, I am full of renewable energy, so I decided to renew my previous solution in order to tackle the second round (I hope for this second round that it uses shin guards).<br>
 
 My first solution matched all the acceptance criteria defined by the rules. Besides, my solution always give the best possible result given the constaints (the formats are respected, the production is always matching the load, the power allocated to each powerplant is a multiple of 0.1 MW, the pmin and pmax of each powerplant is respected, the cost is as low as possible while matching these criteria).<br>
 Besides, the rules require to not use any existing solver. Consequently, I did not use any existing algorithm (whatever it would come from an existing python package or from a book or research paper). Under this constraint, some challengers probably just used a big loop computing all the possible valid production plans in order to choose subsequently the one which implies the smallest cost. Others thought it was sufficient to successively allocate the remaining load to the available powerplants by order of price by MWh. That is not what I did : my solution is valid and I used several tricks to reduce the computation time of my algorithm.<br>

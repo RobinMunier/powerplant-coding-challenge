@@ -39,8 +39,8 @@ Note that the mathematical formulas handcoded in LATEX are not rendered on githu
 [IV Definition of some useful functions](#IV)<br>
 [V Initialization of the API](#V)<br>
 [VI Endpoint creation](#VI)<br>
-[VII Running the API](#V.II)<br>
-[VIII Using the API](#V.III)<br>
+[VII Running the API](#VII)<br>
+[VIII Using the API](#VIII)<br>
 [IX Potential extensions](#IX)<br>
 [X Few words](#X)<br>
 [XI More projects](#XI)<br>

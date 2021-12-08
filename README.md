@@ -633,7 +633,7 @@ Once Postman is open on your computer, click on _POST_ to create a _POST_ reques
 <img src='image3.png'>
 
 
-## IX Validation <a id='IX'></a>
+## IX. Validation <a id='IX'></a>
 
 An efficient way to validate the algorithm is to test it with several different input files. As we are provided with only three different examples of input file, I decided to simulate random input files. This way, I am able to check the results of my algorithm on some variations of the input.
 
